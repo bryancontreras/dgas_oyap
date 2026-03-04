@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientación y Apoyo Psicológico — DGAS UNAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul:       #1B3A6B;
+  --azul-medio: #3D6CB4;
+  --azul-claro: #9BBAE0;
+  --azul-suave: #D6E6F7;
+  --rojo:       #E05470;
+  --rojo-suave: #FAEAEE;
+  --blanco:     #FAFBFE;
+  --gris:       #F2F5FA;
+  --gris-texto: #4A5568;
+  --borde:      rgba(27,58,107,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--azul);background:var(--blanco);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(250,251,254,.95);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--borde);transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 4px 28px rgba(27,58,107,.1)}
+.nav-inner{
+  max-width:1280px;margin:0 auto;padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;height:68px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+/* SVG logo inline */
+.nav-logo svg{height:40px;width:auto}
+.nav-logo-text{font-family:'Outfit',sans-serif;font-weight:700;font-size:.95rem;color:var(--azul);line-height:1.15}
+.nav-logo-sub{font-size:.68rem;font-weight:400;color:var(--gris-texto)}
+
+.nav-links{display:flex;align-items:center;gap:.1rem;list-style:none}
+.nav-links a{
+  text-decoration:none;color:var(--azul);font-size:.8rem;font-weight:500;
+  padding:.42rem .82rem;border-radius:9px;transition:all .2s;
+}
+.nav-links a:hover{background:var(--azul-suave);color:var(--azul-medio)}
+.nav-urg{background:var(--rojo)!important;color:#fff!important;font-weight:600!important;margin-left:.4rem}
+.nav-urg:hover{background:#c43d59!important;transform:translateY(-1px);box-shadow:0 6px 18px rgba(224,84,112,.3)}
+
+/* ── HERO (distribución cuadros) ── */
+.hero{
+  min-height:100vh;padding-top:68px;display:flex;flex-direction:column;
+  justify-content:center;position:relative;overflow:hidden;
+}
+.hero-blob{position:absolute;border-radius:50%;pointer-events:none}
+.hero-blob-1{width:650px;height:650px;top:-20%;right:-12%;background:radial-gradient(circle,var(--azul-suave) 0%,transparent 70%);animation:drift 18s ease-in-out infinite}
+.hero-blob-2{width:500px;height:500px;bottom:-18%;left:-8%;background:radial-gradient(circle,var(--rojo-suave) 0%,transparent 70%);animation:drift 23s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-16px)}}
+
+.hero-inner{
+  max-width:1280px;margin:0 auto;padding:4rem 2rem;
+  position:relative;z-index:1;
+}
+
+/* Badge + Título */
+.hero-top{margin-bottom:2.5rem}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 14px;background:var(--azul-suave);border-radius:100px;
+  font-size:.74rem;font-weight:700;color:var(--azul-medio);margin-bottom:1rem;
+  text-transform:uppercase;letter-spacing:.07em;
+}
+.bdot{width:7px;height:7px;background:var(--rojo);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.4)}}
+
+.hero h1{
+  font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,4vw,3.2rem);
+  font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:.9rem;
+}
+.hero h1 .grad{
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-medio) 60%,var(--rojo) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{font-size:1rem;color:var(--gris-texto);line-height:1.75;max-width:600px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.85rem;flex-wrap:wrap}
+
+/* Grid de cuadros tipo "sala" */
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.6fr 1fr;
+  grid-template-rows:auto auto;
+  gap:1.1rem;
+  margin-top:2.5rem;
+}
+.hg-card{
+  background:white;border-radius:18px;padding:1.5rem 1.6rem;
+  border:1px solid var(--borde);
+  box-shadow:0 6px 28px rgba(27,58,107,.06);
+  transition:all .3s;cursor:pointer;position:relative;overflow:hidden;
+}
+.hg-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--azul),var(--azul-medio));
+  transform:scaleX(0);transition:.3s;transform-origin:left;
+}
+.hg-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(27,58,107,.11)}
+.hg-card:hover::before{transform:scaleX(1)}
+.hg-card.rojo::before{background:linear-gradient(90deg,var(--rojo),#f08094)}
+
+/* Posiciones del grid */
+.hg-ema        {grid-column:1;grid-row:1}
+.hg-inicio     {grid-column:2;grid-row:1/3;display:flex;flex-direction:column;justify-content:space-between}
+.hg-imagen     {grid-column:3;grid-row:1}
+.hg-mision     {grid-column:1;grid-row:2}
+.hg-emergencia {grid-column:1;grid-row:3}/* fila extra en móvil */
+.hg-mapa       {grid-column:2;grid-row:3}
+.hg-quienes    {grid-column:3;grid-row:2/4}
+
+/* re-adjust */
+.hg-emergencia{grid-column:1;grid-row:3}
+.hg-mapa      {grid-column:2;grid-row:3}
+.hg-quienes   {grid-column:3;grid-row:2}
+
+.hero-grid{grid-template-rows:auto auto auto}
+
+.hg-icon{font-size:1.8rem;margin-bottom:.75rem}
+.hg-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.4rem}
+.hg-card p{color:var(--gris-texto);font-size:.82rem;line-height:1.6}
+
+/* Card central grande */
+.hg-inicio h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:1rem}
+.hg-items{display:flex;flex-direction:column;gap:.7rem}
+.hg-item{
+  display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;
+  background:var(--gris);border-radius:11px;font-size:.84rem;font-weight:500;transition:.2s;
+}
+.hg-item:hover{background:var(--azul-suave);transform:translateX(4px)}
+.hg-item-num{
+  width:28px;height:28px;background:var(--azul);color:white;
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;flex-shrink:0;
+}
+
+/* imagen placeholder */
+.img-placeholder{
+  width:100%;height:130px;border-radius:12px;
+  background:linear-gradient(135deg,var(--azul-suave),var(--azul-claro));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;margin-bottom:.75rem;
+}
+
+/* stat pills en emergencias */
+.urg-number{
+  font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;
+  color:var(--rojo);margin-top:.5rem;
+}
+
+/* ── SECCIONES GENÉRICAS ── */
+section{padding:5rem 2rem}
+.si{max-width:1280px;margin:0 auto}
+.sec-label{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--azul-medio);margin-bottom:.55rem}
+.sec-title{font-family:'Outfit',sans-serif;font-size:clamp(1.75rem,2.8vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.85rem}
+.sec-sub{font-size:.97rem;color:var(--gris-texto);max-width:580px;line-height:1.75}
+.sec-hdr{margin-bottom:3rem}
+.sec-hdr.center{text-align:center}.sec-hdr.center .sec-sub{margin:0 auto}
+
+/* ── ACERCA DE ── */
+.acerca{background:var(--gris)}
+.ac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.ac-card{
+  background:white;border-radius:18px;padding:1.85rem;
+  border:1px solid var(--borde);transition:all .3s;cursor:pointer;position:relative;overflow:hidden;
+}
+.ac-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--azul),var(--azul-medio));
+  transform:scaleX(0);transition:.3s;transform-origin:left;
+}
+.ac-card:hover{transform:translateY(-4px);box-shadow:0 12px 38px rgba(27,58,107,.1)}
+.ac-card:hover::after{transform:scaleX(1)}
+.ac-icon{font-size:2rem;margin-bottom:.9rem}
+.ac-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.45rem}
+.ac-card p{color:var(--gris-texto);font-size:.84rem;line-height:1.65}
+
+/* ── SERVICIOS ── */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.srv-card{border-radius:20px;padding:2.1rem;border:2px solid transparent;transition:all .3s;cursor:pointer}
+.srv-card.azul{background:var(--azul-suave)}
+.srv-card.azul-m{background:#e8f0fb}
+.srv-card.rojo{background:var(--rojo-suave)}
+.srv-card:hover{transform:translateY(-5px);box-shadow:0 16px 46px rgba(0,0,0,.09)}
+.srv-card.azul:hover{border-color:var(--azul-claro)}
+.srv-card.azul-m:hover{border-color:var(--azul-medio)}
+.srv-card.rojo:hover{border-color:#f09aab}
+.srv-emoji{font-size:2.6rem;margin-bottom:1.1rem}
+.srv-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.55rem}
+.srv-card p{font-size:.85rem;color:var(--gris-texto);line-height:1.7;margin-bottom:1.1rem}
+.srv-tag{display:inline-flex;align-items:center;gap:6px;font-size:.73rem;font-weight:600;padding:4px 11px;border-radius:100px;background:rgba(255,255,255,.75)}
+.srv-link{display:inline-flex;align-items:center;gap:6px;margin-top:1.1rem;font-size:.8rem;font-weight:700;text-decoration:none;transition:gap .2s}
+.srv-link:hover{gap:12px}
+.srv-link.al{color:var(--azul)}.srv-link.am{color:var(--azul-medio)}.srv-link.rl{color:var(--rojo)}
+
+.urg-strip{
+  background:var(--rojo);border-radius:20px;padding:1.85rem 2.25rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;margin-top:1.75rem;
+}
+.us-left{display:flex;align-items:center;gap:1.1rem}
+.us-icon{width:50px;height:50px;background:rgba(255,255,255,.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.us-left h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:white}
+.us-left p{font-size:.82rem;color:rgba(255,255,255,.85)}
+.us-phone{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.7rem;color:white}
+
+/* ── OFERTA ACADÉMICA ── */
+.aca{background:var(--gris)}
+.aca-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+.aca-card{
+  background:white;border-radius:18px;padding:1.85rem;
+  border:1px solid var(--borde);display:flex;gap:1.1rem;transition:all .3s;
+}
+.aca-card:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(27,58,107,.1)}
+.aca-num{font-family:'Outfit',sans-serif;font-weight:800;font-size:2.3rem;color:var(--azul-suave);line-height:1;flex-shrink:0;width:46px}
+.aca-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.35rem}
+.aca-body p{color:var(--gris-texto);font-size:.83rem;line-height:1.65}
+.aca-tags{margin-top:.7rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.aca-tag{font-size:.7rem;font-weight:600;padding:3px 9px;border-radius:7px;background:var(--azul-suave);color:var(--azul)}
+
+/* ── INVESTIGACIÓN ── */
+.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.inv-card{background:white;border-radius:16px;padding:1.6rem;border:1px solid var(--borde);transition:all .3s;cursor:pointer}
+.inv-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(27,58,107,.1)}
+.inv-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--azul-medio);background:var(--azul-suave);padding:3px 9px;border-radius:6px;display:inline-block;margin-bottom:.7rem}
+.inv-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.93rem;line-height:1.35;margin-bottom:.45rem}
+.inv-card .inv-auth{font-size:.76rem;color:var(--gris-texto);margin-bottom:.35rem}
+.inv-card .inv-j{font-size:.73rem;font-weight:600;color:var(--azul-medio)}
+.inv-year{font-size:.7rem;color:#aaa;margin-top:.4rem}
+.inv-cta{text-align:center;margin-top:2.25rem}
+
+/* ── ORIENTACIÓN Y APOYO PSICOLÓGICO ── */
+.oap{background:var(--gris)}
+.oap-intro{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-bottom:3rem;
+}
+.oap-desc p{color:var(--gris-texto);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+.oap-highlight{
+  background:white;border-radius:18px;padding:1.75rem;
+  border:1px solid var(--borde);
+}
+.oap-highlight h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:1rem}
+.oap-items{display:flex;flex-direction:column;gap:.6rem}
+.oap-item{
+  display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;
+  background:var(--gris);border-radius:10px;font-size:.83rem;font-weight:500;
+}
+.oap-item-icon{font-size:1.1rem}
+
+.oap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.oap-card{
+  background:white;border-radius:16px;padding:1.5rem;
+  border:1px solid var(--borde);text-align:center;transition:all .3s;cursor:pointer;
+}
+.oap-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(27,58,107,.1)}
+.oap-card-icon{
+  width:60px;height:60px;border-radius:16px;margin:0 auto .85rem;
+  display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+}
+.oap-card-icon.a{background:var(--azul-suave)}.oap-card-icon.m{background:#e8f0fb}
+.oap-card-icon.r{background:var(--rojo-suave)}.oap-card-icon.g{background:#fff9e6}
+.oap-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+.oap-card p{font-size:.77rem;color:var(--gris-texto);line-height:1.5}
+.oap-count{font-size:.7rem;font-weight:700;color:var(--azul-medio);margin-top:.55rem}
+
+/* ── DIRECTORIO ── */
+.dir-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;margin-top:0}
+
+/* Centros / Instituciones */
+.dir-main-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:1.1rem;color:var(--azul)}
+.dir-list{display:flex;flex-direction:column;gap:.9rem}
+.dir-card{
+  background:white;border-radius:16px;padding:1.5rem;
+  border:1px solid var(--borde);transition:all .3s;
+}
+.dir-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(27,58,107,.1)}
+.dir-org{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem}
+.dir-org-icon{width:40px;height:40px;border-radius:11px;background:var(--azul-suave);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.dir-org h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;line-height:1.25}
+.dir-org span{font-size:.73rem;color:var(--gris-texto)}
+.dir-lines{display:flex;flex-direction:column;gap:.4rem}
+.dir-line{display:flex;align-items:center;gap:.55rem;padding:.5rem .8rem;background:var(--gris);border-radius:9px;font-size:.78rem}
+.dir-line strong{font-weight:700;color:var(--azul-medio)}
+.dir-desc{font-size:.71rem;color:var(--gris-texto);margin-top:.3rem;padding:0 .8rem}
+.d24{display:inline-block;font-size:.62rem;font-weight:700;color:white;background:var(--rojo);padding:2px 6px;border-radius:5px;margin-left:.35rem}
+
+/* Columna derecha: Atención Telefónica + Recursos en Línea */
+.dir-side{display:flex;flex-direction:column;gap:1.5rem}
+.dir-side-card{
+  background:white;border-radius:18px;padding:1.6rem;
+  border:1px solid var(--borde);
+}
+.dir-side-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:1rem}
+.tel-list{display:flex;flex-direction:column;gap:.5rem}
+.tel-item{
+  display:flex;align-items:center;gap:.6rem;padding:.55rem .85rem;
+  background:var(--gris);border-radius:9px;font-size:.78rem;
+}
+.tel-item strong{color:var(--rojo);font-weight:700}
+.rec-en-linea{display:flex;flex-direction:column;gap:.5rem}
+.rec-link{
+  display:flex;align-items:center;gap:.6rem;padding:.6rem .9rem;
+  background:var(--azul-suave);border-radius:10px;font-size:.8rem;font-weight:600;
+  color:var(--azul);text-decoration:none;transition:all .2s;
+}
+.rec-link:hover{background:var(--azul-claro);transform:translateX(4px)}
+.rec-link-icon{font-size:1rem}
+
+/* ── FOOTER ── */
+footer{background:var(--azul);color:white;padding:3.5rem 2rem 2rem}
+.fi{max-width:1280px;margin:0 auto}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.25rem}
+.fb h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.6rem}
+.fb h3 span{color:var(--azul-claro)}
+.fb p{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.7;max-width:300px}
+.fc h4{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--azul-claro);margin-bottom:.85rem}
+.fc a{display:block;color:rgba(255,255,255,.78);text-decoration:none;font-size:.84rem;padding:.22rem 0;transition:color .2s}
+.fc a:hover{color:white}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:1.6rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.9rem}
+.fbot p{font-size:.75rem;color:rgba(255,255,255,.55)}
+.fsoc{display:flex;gap:.55rem}
+.fs{width:35px;height:35px;background:rgba(255,255,255,.07);border-radius:9px;display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:.78rem;transition:all .2s;border:1px solid rgba(255,255,255,.07)}
+.fs:hover{background:var(--rojo);transform:translateY(-2px)}
+
+/* ── MODALES ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(10,20,40,.55);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  background:white;border-radius:22px;width:100%;max-width:720px;
+  max-height:88vh;display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(27,58,107,.2);
+  animation:modalIn .3s ease-out;
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 1.75rem;border-bottom:1px solid var(--borde);flex-shrink:0;
+}
+.modal-head-left{display:flex;align-items:center;gap:.85rem}
+.modal-head-icon{
+  width:44px;height:44px;border-radius:12px;background:var(--azul-suave);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.modal-head h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;color:var(--azul)}
+.modal-head p{font-size:.75rem;color:var(--gris-texto);margin-top:.15rem}
+.modal-close{
+  width:36px;height:36px;border-radius:10px;border:none;background:var(--gris);
+  cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+  color:var(--gris-texto);transition:all .2s;
+}
+.modal-close:hover{background:var(--rojo);color:white}
+.modal-body{overflow-y:auto;padding:1.75rem;flex:1}
+.modal-body::-webkit-scrollbar{width:5px}
+.modal-body::-webkit-scrollbar-track{background:var(--gris);border-radius:10px}
+.modal-body::-webkit-scrollbar-thumb{background:var(--azul-claro);border-radius:10px}
+
+/* contenido modal */
+.modal-intro{
+  background:var(--azul-suave);border-radius:14px;padding:1.1rem 1.25rem;
+  margin-bottom:1.5rem;font-size:.88rem;color:var(--azul);line-height:1.65;
+}
+.modal-section{margin-bottom:1.5rem}
+.modal-section h3{
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--azul);margin-bottom:.6rem;padding-bottom:.4rem;
+  border-bottom:2px solid var(--azul-suave);
+}
+.modal-section p{font-size:.86rem;color:var(--gris-texto);line-height:1.72;margin-bottom:.5rem}
+.modal-section ul{padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+.modal-section ul li{font-size:.85rem;color:var(--gris-texto);line-height:1.6}
+.modal-tag{
+  display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;padding:3px 9px;border-radius:6px;margin-bottom:.75rem;
+}
+.modal-tag.azul{background:var(--azul-suave);color:var(--azul-medio)}
+.modal-tag.rojo{background:var(--rojo-suave);color:var(--rojo)}
+.modal-notas{
+  background:#fffbe6;border:1px solid #ffe082;border-radius:12px;
+  padding:1rem 1.2rem;margin-top:1.25rem;
+}
+.modal-notas p{font-size:.82rem;color:#7a5f00;line-height:1.65}
+.modal-foot{
+  padding:1.1rem 1.75rem;border-top:1px solid var(--borde);flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+  background:var(--gris);border-radius:0 0 22px 22px;
+}
+.modal-foot p{font-size:.75rem;color:var(--gris-texto)}
+.modal-foot a{
+  display:inline-flex;align-items:center;gap:6px;padding:9px 20px;
+  background:var(--azul);color:white;border:none;border-radius:10px;
+  font-size:.83rem;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;
+}
+.modal-foot a:hover{background:var(--azul-medio)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .55s,transform .55s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .ac-grid,.srv-grid,.inv-grid,.oap-grid{grid-template-columns:1fr 1fr}
+  .aca-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr 1fr;gap:2rem}
+  .hero-grid{grid-template-columns:1fr 1.4fr;grid-template-rows:auto auto auto}
+  .hg-inicio{grid-column:2;grid-row:1/3}
+  .hg-imagen{grid-column:1;grid-row:1}
+  .hg-ema{grid-column:1;grid-row:2}
+  .hg-mision{grid-column:1;grid-row:3}
+  .hg-emergencia{grid-column:2;grid-row:3}
+  .hg-mapa{grid-column:1;grid-row:4}
+  .hg-quienes{grid-column:2;grid-row:4}
+  .dir-layout{grid-template-columns:1fr}
+  .oap-intro{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hg-inicio,.hg-quienes{grid-column:1;grid-row:auto}
+  .hg-imagen,.hg-ema,.hg-mision,.hg-emergencia,.hg-mapa{grid-column:1;grid-row:auto}
+  .ac-grid,.srv-grid,.inv-grid,.oap-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .urg-strip{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ MODALES ══════════ -->
+
+<!-- MODAL: ASPECTOS ÉTICOS -->
+<div class="modal-overlay" id="modal-etica">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <div class="modal-head-icon">⚖️</div>
+        <div>
+          <h2>Aspectos Éticos — Consentimiento Informado</h2>
+          <p>DGAS · UNAM · En colaboración con AM Servicios Interactivos SA de CV</p>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('etica')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-intro">
+        Este documento informa de manera clara, comprensible y transparente las características, alcances, limitaciones y finalidad investigativa del Servicio de Atención Telefónica Asistido por Inteligencia Artificial para la Identificación de Riesgo Suicida, a fin de que el usuario pueda otorgar su consentimiento informado.
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Introducción</span>
+        <p>La DGAS de la UNAM brinda atención psicológica de urgencia para identificar y atender el riesgo suicida a través de un servicio de atención telefónica asistido por inteligencia artificial, desarrollado en colaboración con AM Servicios Interactivos SA de CV, dirigido a los miembros de la comunidad universitaria que así lo soliciten.</p>
+        <p>Este servicio forma parte de un proyecto con fines de investigación, evaluación y mejora continua, orientado a analizar el uso de inteligencia artificial como herramienta de apoyo en la identificación temprana de riesgo suicida y en la canalización oportuna a atención humana especializada.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">¿En qué consiste el servicio?</span>
+        <p>El asistente de inteligencia artificial denominado <strong>"Lucy"</strong> opera exclusivamente como herramienta de apoyo para la clasificación del riesgo suicida y la referencia oportuna a atención humana especializada.</p>
+        <p>En ningún momento la inteligencia artificial:</p>
+        <ul>
+          <li>Sustituye al terapeuta</li>
+          <li>Realiza diagnósticos clínicos</li>
+          <li>Proporciona tratamiento psicológico</li>
+          <li>Lleva a cabo intervenciones terapéuticas</li>
+        </ul>
+        <p style="margin-top:.6rem">La atención clínica en salud mental es brindada únicamente por profesionales capacitados.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Duración y tipo de atención</span>
+        <p>En caso de que la llamada sea canalizada a un terapeuta, la atención se brinda en formato de <strong>intervención breve (sesión única)</strong>. Si se identifica necesidad de atención adicional, el usuario podrá ser referido a servicios especializados dentro de la UNAM o centros externos.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Costos del servicio</span>
+        <p>La atención psicológica es <strong>totalmente gratuita</strong> para todos los miembros de la comunidad universitaria. En ningún caso se solicitará pago monetario ni ningún tipo de retribución.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Evaluación de riesgo suicida — ASQ</span>
+        <p>Se utiliza el ASQ, herramienta de evaluación rápida del Programa Nacional para la Prevención del Suicidio, que explora:</p>
+        <ul>
+          <li>Deseos de morir</li>
+          <li>Pensamientos relacionados con el suicidio</li>
+          <li>Intentos suicidas previos</li>
+          <li>Intencionalidad suicida actual</li>
+        </ul>
+        <p style="margin-top:.6rem">En caso de riesgo alto o inminente, la llamada se transfiere de manera inmediata a un profesional de salud mental.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Grabación de llamadas</span>
+        <p>Las llamadas podrán ser grabadas exclusivamente con fines clínicos, de supervisión, investigación y mejora del servicio. Su confidencialidad es resguardada por la DGAS. Solo podrán ser revisadas por personal autorizado o autoridades competentes con fundamento legal.</p>
+      </div>
+
+      <div class="modal-section">
+        <span class="modal-tag azul">Consideraciones importantes</span>
+        <ul>
+          <li>La participación es <strong>voluntaria</strong> y puede interrumpirse en cualquier momento, sin consecuencias institucionales.</li>
+          <li>La información podrá ser utilizada con fines clínicos, de enseñanza, investigación y divulgación científica, preservando confidencialidad y anonimato.</li>
+          <li>La DGAS es responsable del uso ético y confidencial de la información.</li>
+          <li>El asistente de IA puede presentar limitaciones técnicas y no sustituye la evaluación clínica profesional.</li>
+          <li>El usuario tiene derecho a solicitar atención en salud mental siempre que sea miembro activo de la UNAM.</li>
+        </ul>
+      </div>
+
+      <div class="modal-notas">
+        <p>⚠️ <strong>Aceptación del consentimiento:</strong> Al continuar con la llamada telefónica y hacer uso del servicio, el usuario manifiesta haber sido informado de manera clara y otorga su consentimiento informado para recibir la atención descrita y para que la información generada sea utilizada conforme a la finalidad asistencial y de investigación de este documento.</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <p>DGAS · UNAM · 2026</p>
+      <a href="#" onclick="closeModal('etica');return false;">Cerrar documento</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: TÉRMINOS Y CONDICIONES -->
+<div class="modal-overlay" id="modal-terminos">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <div class="modal-head-icon">📋</div>
+        <div>
+          <h2>Términos y Condiciones</h2>
+          <p>DGAS · UNAM · En colaboración con ActivaMente Producciones SA de CV</p>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('terminos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-intro">
+        Documento que establece los términos y condiciones que regulan el uso del Servicio de Atención Telefónica asistido por Inteligencia Artificial para la Identificación de Riesgo Suicida, operado por la DGAS de la UNAM.
+      </div>
+
+      <div class="modal-section">
+        <h3>1. Objeto del servicio</h3>
+        <p>El servicio tiene como finalidad <strong>identificar oportunamente riesgo suicida</strong> y canalizar al usuario a atención humana especializada, cuando así se requiera.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>2. Naturaleza del servicio</h3>
+        <p>El servicio es de carácter preventivo, orientativo y de urgencia. El asistente de inteligencia artificial:</p>
+        <ul>
+          <li>No sustituye la evaluación clínica profesional</li>
+          <li>No realiza diagnósticos médicos o psiquiátricos</li>
+          <li>No brinda terapia ni tratamiento psicológico</li>
+          <li>No prescribe medicamentos</li>
+          <li>No toma decisiones clínicas definitivas sin supervisión humana</li>
+        </ul>
+        <p style="margin-top:.6rem">Las decisiones clínicas son responsabilidad exclusiva de los profesionales de salud mental de la DGAS.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>3. Uso de inteligencia artificial</h3>
+        <p>La IA se utiliza para analizar información durante la llamada, aplicar protocolos de evaluación de riesgo suicida, clasificar niveles de riesgo y generar alertas para canalización. <strong>Todas las evaluaciones cuentan con supervisión humana obligatoria.</strong></p>
+      </div>
+
+      <div class="modal-section">
+        <h3>4. Condiciones de acceso</h3>
+        <p>El servicio está dirigido <strong>exclusivamente a miembros activos de la comunidad universitaria de la UNAM</strong>. El usuario es responsable de proporcionar información veraz y propia.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>5. Grabación y registro de llamadas</h3>
+        <p>Las llamadas podrán ser grabadas y transcritas con fines de atención clínica, supervisión profesional, seguimiento del caso, mejora continua del servicio y cumplimiento de protocolos de seguridad. El uso del servicio implica la aceptación de la grabación.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>6. Limitaciones del servicio</h3>
+        <p>El servicio no sustituye atención médica de urgencia, servicios hospitalarios ni intervenciones psiquiátricas presenciales. En situaciones que lo requieran, se activarán protocolos de canalización a servicios de emergencia.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>7. Derechos del usuario</h3>
+        <ul>
+          <li>Interrumpir la llamada en cualquier momento</li>
+          <li>Solicitar atención por una persona</li>
+          <li>No responder preguntas que no desee</li>
+          <li>Rechazar contacto posterior</li>
+          <li>Solicitar información sobre el uso de sus datos</li>
+        </ul>
+        <p style="margin-top:.6rem">El ejercicio de estos derechos no conlleva sanción ni consecuencia institucional alguna.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>8. Responsabilidades del usuario</h3>
+        <ul>
+          <li>Hacer uso responsable del servicio</li>
+          <li>Proporcionar información veraz</li>
+          <li>No suplantar la identidad de terceros</li>
+        </ul>
+        <p style="margin-top:.6rem">El uso indebido puede derivar en acciones administrativas conforme a la normativa universitaria.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>9. Modificaciones</h3>
+        <p>La DGAS se reserva el derecho de modificar los presentes Términos y Condiciones para su actualización o mejora, informando a través de los canales institucionales correspondientes.</p>
+      </div>
+
+      <div class="modal-notas">
+        <p>⚠️ <strong>Aceptación:</strong> El uso del servicio y la continuación de la llamada telefónica después del aviso inicial implica la aceptación expresa de los presentes Términos y Condiciones.</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <p>DGAS · UNAM · 2026</p>
+      <a href="#" onclick="closeModal('terminos');return false;">Cerrar documento</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: AVISO DE PRIVACIDAD -->
+<div class="modal-overlay" id="modal-privacidad">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-head-left">
+        <div class="modal-head-icon">🔒</div>
+        <div>
+          <h2>Aviso de Privacidad</h2>
+          <p>DGAS · UNAM · En colaboración con ActivaMente Producciones SA de CV</p>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('privacidad')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-intro">
+        La Dirección General de Atención a la Salud (DGAS) de la UNAM es responsable del tratamiento de los datos personales y datos sensibles de salud mental recabados a través del Servicio de Atención Telefónica asistido por Inteligencia Artificial.
+      </div>
+
+      <div class="modal-section">
+        <h3>1. Responsable del tratamiento de datos</h3>
+        <p>La <strong>Dirección General de Atención a la Salud (DGAS) de la UNAM</strong>, con el apoyo tecnológico de ActivaMente Producciones SA de CV, es responsable del tratamiento de los datos personales y datos sensibles de salud mental recabados.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>2. Datos personales que se recaban</h3>
+        <ul>
+          <li>Datos de identificación básica (número de cuenta UNAM o número de trabajador)</li>
+          <li>Edad</li>
+          <li>Número telefónico</li>
+          <li>Información relacionada con la salud mental y el bienestar emocional</li>
+          <li>Información sobre ideación suicida o conductas de riesgo, en su caso</li>
+        </ul>
+        <p style="margin-top:.6rem">Estos datos son considerados <strong>datos personales sensibles</strong> y reciben tratamiento reforzado conforme a la legislación aplicable.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>3. Finalidades del tratamiento</h3>
+        <span class="modal-tag azul">Finalidades primarias</span>
+        <ul>
+          <li>Identificar y evaluar riesgo suicida</li>
+          <li>Brindar atención psicológica de urgencia</li>
+          <li>Canalizar al usuario a atención humana especializada</li>
+          <li>Dar seguimiento clínico y de bienestar emocional</li>
+          <li>Garantizar la calidad y seguridad del servicio</li>
+        </ul>
+        <span class="modal-tag rojo" style="margin-top:.75rem">Finalidades secundarias</span>
+        <ul>
+          <li>Supervisión clínica</li>
+          <li>Investigación y análisis estadístico</li>
+          <li>Mejora continua del sistema de atención</li>
+        </ul>
+        <p style="margin-top:.6rem">Las finalidades secundarias se realizarán con <strong>datos anonimizados o agregados</strong>.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>4. Uso de inteligencia artificial</h3>
+        <p>El servicio utiliza sistemas de IA como herramientas de apoyo para el análisis de información y la evaluación inicial de riesgo, siempre bajo supervisión humana. <strong>Ninguna decisión clínica definitiva es tomada exclusivamente por sistemas automatizados.</strong></p>
+      </div>
+
+      <div class="modal-section">
+        <h3>5. Transferencia de datos</h3>
+        <p>Los datos personales podrán ser compartidos únicamente con profesionales de salud mental de la DGAS involucrados en la atención, o con autoridades competentes cuando exista obligación legal o riesgo inminente para la vida o integridad del usuario o de terceros.</p>
+        <p><strong>No se realizarán transferencias de datos con fines comerciales o de lucro.</strong></p>
+      </div>
+
+      <div class="modal-section">
+        <h3>6. Medidas de seguridad</h3>
+        <p>La DGAS implementa medidas técnicas, administrativas y organizativas para proteger los datos personales, incluyendo controles de acceso, confidencialidad y resguardo seguro de la información.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>7. Derechos ARCO</h3>
+        <p>El usuario tiene derecho a:</p>
+        <ul>
+          <li><strong>Acceder</strong> a sus datos personales</li>
+          <li><strong>Rectificar</strong> información incorrecta o incompleta</li>
+          <li><strong>Cancelar</strong> sus datos cuando sea legalmente procedente</li>
+          <li><strong>Oponerse</strong> al tratamiento de sus datos</li>
+        </ul>
+        <p style="margin-top:.6rem">Para ejercer estos derechos, el usuario podrá contactar a la DGAS a través de los canales oficiales de la UNAM.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>8. Conservación de los datos</h3>
+        <p>Los datos personales serán conservados únicamente durante el tiempo necesario para cumplir con las finalidades descritas y conforme a las disposiciones legales y administrativas aplicables.</p>
+      </div>
+
+      <div class="modal-section">
+        <h3>9. Cambios al aviso de privacidad</h3>
+        <p>El presente Aviso podrá ser actualizado para reflejar cambios normativos, operativos o tecnológicos. Las versiones actualizadas estarán disponibles a través de los medios institucionales correspondientes.</p>
+      </div>
+
+      <div class="modal-notas">
+        <p>⚠️ <strong>Consentimiento:</strong> Al hacer uso del servicio y continuar con la llamada telefónica después del aviso inicial, el usuario manifiesta su conformidad con el presente Aviso de Privacidad y autoriza el tratamiento de sus datos personales conforme a lo aquí descrito.</p>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <p>DGAS · UNAM · 2026</p>
+      <a href="#" onclick="closeModal('privacidad');return false;">Cerrar documento</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <!-- Logo Salud UNAM simplificado en SVG con colores del logo real -->
+      <svg viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Estetoscopio simplificado -->
+        <path d="M18 10 L18 28 Q18 38 28 38 Q38 38 38 28 L38 22" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <rect x="13" y="6" width="5" height="8" rx="2" fill="#1B3A6B"/>
+        <rect x="21" y="6" width="5" height="8" rx="2" fill="#1B3A6B"/>
+        <!-- Alas izquierda -->
+        <path d="M14 20 L4 16" stroke="#9BBAE0" stroke-width="3" stroke-linecap="round"/>
+        <path d="M14 23 L2 21" stroke="#9BBAE0" stroke-width="3" stroke-linecap="round"/>
+        <!-- Figura persona + corazón -->
+        <circle cx="38" cy="26" r="4" fill="#1B3A6B"/>
+        <path d="M34 32 Q34 27 38 27 Q42 27 42 32" fill="#1B3A6B"/>
+        <path d="M43 22 Q45 19 48 22 Q51 19 53 22 Q53 28 48 32 Q43 28 43 22Z" fill="#E05470"/>
+        <circle cx="54" cy="18" r="4" fill="#9BBAE0"/>
+        <circle cx="46" cy="14" r="2.5" fill="#9BBAE0"/>
+        <!-- Texto SALUD -->
+        <text x="64" y="32" font-family="Outfit,sans-serif" font-weight="800" font-size="18" fill="#1B3A6B">SALUD</text>
+        <text x="64" y="48" font-family="Outfit,sans-serif" font-weight="800" font-size="13" fill="#E05470" letter-spacing="3">UNAM</text>
+      </svg>
+      <div>
+        <div class="nav-logo-text">Salud Mental</div>
+        <div class="nav-logo-sub">Orientación y Apoyo Psicológico · DGAS</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#acerca">Acerca de</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#academica">Oferta Académica</a></li>
+      <li><a href="#investigacion">Investigación</a></li>
+      <li><a href="#oap">Orientación</a></li>
+      <li><a href="#directorio">Directorio</a></li>
+      <li><a href="#servicios" class="nav-urg">🆘 Urgencias</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── HERO / INICIO ── -->
+<section class="hero" id="inicio">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-top reveal">
+      <div class="hero-badge"><span class="bdot"></span>DGAS · Ciudad Universitaria</div>
+      <h1>Tu bienestar mental<br><span class="grad">importa en la UNAM</span></h1>
+      <p class="hero-desc">El Área de Orientación y Apoyo Psicológico ofrece atención profesional, confidencial y gratuita para toda la comunidad universitaria. Estamos aquí para acompañarte.</p>
+      <div class="hero-btns">
+        <a href="#acerca" class="btn-p" style="display:inline-flex;align-items:center;gap:7px;padding:13px 26px;background:var(--azul);color:white;border:none;border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none">Agendar valoración →</a>
+        <a href="#servicios" class="btn-s" style="display:inline-flex;align-items:center;gap:7px;padding:13px 26px;background:transparent;color:var(--azul);border:2px solid var(--azul-suave);border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none">Ver servicios</a>
+      </div>
+    </div>
+
+    <!-- Grid de cuadros tipo wireframe -->
+    <div class="hero-grid">
+      <!-- Información EMA -->
+      <div class="hg-card hg-ema reveal">
+        <div class="hg-icon">📋</div>
+        <h3>Información sobre el EMA</h3>
+        <p>Conoce qué es el Examen Médico Activo y cómo realizarlo como parte de tu inscripción universitaria.</p>
+      </div>
+
+      <!-- Tarjeta central grande: Inicio -->
+      <div class="hg-card hg-inicio reveal">
+        <div>
+          <h2>¿Qué necesitas hoy?</h2>
+          <p style="font-size:.85rem;color:var(--gris-texto);margin-bottom:1rem">Accede a los servicios de salud mental disponibles para ti como universitario.</p>
+        </div>
+        <div class="hg-items">
+          <div class="hg-item"><span class="hg-item-num">1</span>Agendar consulta o valoración psicológica</div>
+          <div class="hg-item"><span class="hg-item-num">2</span>Solicitar atención psiquiátrica</div>
+          <div class="hg-item"><span class="hg-item-num">3</span>Urgencias psicológicas (sin cita)</div>
+          <div class="hg-item"><span class="hg-item-num">4</span>Descargar recursos y materiales</div>
+          <div class="hg-item"><span class="hg-item-num">5</span>Servicio social y prácticas profesionales</div>
+        </div>
+      </div>
+
+      <!-- Imagen del departamento -->
+      <div class="hg-card hg-imagen reveal">
+        <div class="img-placeholder">🏥</div>
+        <h3>Departamento de Salud Mental</h3>
+        <p style="font-size:.8rem;color:var(--gris-texto)">DGAS · CMU, Ciudad Universitaria</p>
+      </div>
+
+      <!-- Cartel Misión -->
+      <div class="hg-card hg-mision reveal">
+        <div class="hg-icon">🎯</div>
+        <h3>Misión · Salud Mental DGAS</h3>
+        <p>Promover el bienestar psicológico integral de la comunidad universitaria mediante atención, prevención e investigación.</p>
+      </div>
+
+      <!-- Números de emergencia -->
+      <div class="hg-card hg-emergencia rojo reveal">
+        <div class="hg-icon">📞</div>
+        <h3>Números de Emergencia</h3>
+        <p>Si estás en crisis llama ahora:</p>
+        <div class="urg-number">800 290 0024</div>
+        <p style="font-size:.75rem;color:var(--gris-texto);margin-top:.4rem">SAPTEL · 55 5259-8121</p>
+      </div>
+
+      <!-- Mapa DGAS -->
+      <div class="hg-card hg-mapa reveal">
+        <div class="hg-icon">📍</div>
+        <h3>Mapa de la DGAS y ubicación de Salud Mental</h3>
+        <p>Centro Médico Universitario, Planta Baja. Circuito de la Investigación Científica, CU.</p>
+      </div>
+
+      <!-- Documentos legales -->
+      <div class="hg-card hg-docs reveal" style="grid-column:3;grid-row:3">
+        <div class="hg-icon">📑</div>
+        <h3 style="margin-bottom:1rem">Documentos legales</h3>
+        <div style="display:flex;flex-direction:column;gap:.6rem">
+          <a href="#" onclick="openModal('privacidad');return false;" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;background:var(--azul-suave);border-radius:11px;text-decoration:none;transition:all .2s" onmouseover="this.style.background='#c5d9f0';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--azul-suave)';this.style.transform='translateX(0)'">
+            <span style="font-size:1.1rem">🔒</span>
+            <span style="font-size:.8rem;font-weight:600;color:var(--azul)">Aviso de Privacidad</span>
+          </a>
+          <a href="#" onclick="openModal('terminos');return false;" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;background:var(--azul-suave);border-radius:11px;text-decoration:none;transition:all .2s" onmouseover="this.style.background='#c5d9f0';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--azul-suave)';this.style.transform='translateX(0)'">
+            <span style="font-size:1.1rem">📋</span>
+            <span style="font-size:.8rem;font-weight:600;color:var(--azul)">Términos y Condiciones</span>
+          </a>
+          <a href="#" onclick="openModal('etica');return false;" style="display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;background:var(--rojo-suave);border-radius:11px;text-decoration:none;transition:all .2s" onmouseover="this.style.background='#f3c0cb';this.style.transform='translateX(4px)'" onmouseout="this.style.background='var(--rojo-suave)';this.style.transform='translateX(0)'">
+            <span style="font-size:1.1rem">⚖️</span>
+            <span style="font-size:.8rem;font-weight:600;color:var(--rojo)">Aspectos Éticos</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ¿Quiénes somos? -->
+      <div class="hg-card hg-quienes reveal">
+        <div class="hg-icon">👥</div>
+        <h3>¿Quiénes somos?</h3>
+        <p style="margin-bottom:.75rem">Presentación del personal de admisión y del equipo multidisciplinario de Salud Mental DGAS.</p>
+        <div style="display:flex;flex-direction:column;gap:.45rem">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:500"><span style="width:32px;height:32px;background:var(--azul-suave);border-radius:8px;display:flex;align-items:center;justify-content:center">👩‍⚕️</span>Psicólogos Clínicos</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:500"><span style="width:32px;height:32px;background:var(--azul-suave);border-radius:8px;display:flex;align-items:center;justify-content:center">🩺</span>Psiquiatras</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:500"><span style="width:32px;height:32px;background:var(--azul-suave);border-radius:8px;display:flex;align-items:center;justify-content:center">🤝</span>Trabajo Social</div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:500"><span style="width:32px;height:32px;background:var(--azul-suave);border-radius:8px;display:flex;align-items:center;justify-content:center">📚</span>Personal de Admisión</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACERCA DE ── -->
+<section class="acerca" id="acerca">
+  <div class="si">
+    <div class="sec-hdr reveal">
+      <p class="sec-label">Acerca de</p>
+      <h2 class="sec-title">Conoce nuestro equipo y proceso</h2>
+      <p class="sec-sub">Cómo funciona el Área de Salud Mental de la DGAS: quiénes somos, qué esperar en tu primera visita y cómo garantizamos tu confidencialidad.</p>
+    </div>
+    <div class="ac-grid">
+      <div class="ac-card reveal">
+        <div class="ac-icon">🗓️</div>
+        <h3>¿Cómo agendar una valoración?</h3>
+        <p>Solicita tu cita presencialmente en el CMU, por correo o teléfono. En la primera sesión un profesional evaluará tus necesidades y orientará el proceso terapéutico más adecuado.</p>
+      </div>
+      <div class="ac-card reveal">
+        <div class="ac-icon">👥</div>
+        <h3>¿Quiénes conforman el equipo?</h3>
+        <p>Psicólogos clínicos, psiquiatras, trabajadores sociales y orientadores especializados. Todo el personal cuenta con formación de posgrado y actualización continua.</p>
+      </div>
+      <div class="ac-card reveal">
+        <div class="ac-icon">🔒</div>
+        <h3>Confidencialidad y ética</h3>
+        <p>Tu información está protegida por el Aviso de Privacidad de la UNAM. Toda consulta es estrictamente confidencial conforme al Código Ético del Psicólogo.</p>
+      </div>
+      <div class="ac-card reveal">
+        <div class="ac-icon">🎓</div>
+        <h3>¿A quién va dirigido?</h3>
+        <p>Servicio gratuito para estudiantes, académicos y personal administrativo de la UNAM. Solo necesitas tu credencial universitaria vigente.</p>
+      </div>
+      <div class="ac-card reveal">
+        <div class="ac-icon">📍</div>
+        <h3>Ubicación y horarios</h3>
+        <p>Centro Médico Universitario, Planta Baja, CU. Atención de lunes a viernes de 8:00 a 20:00 h. Consultorios adicionales en facultades y preparatorias.</p>
+      </div>
+      <div class="ac-card reveal">
+        <div class="ac-icon">🌐</div>
+        <h3>Modalidad en línea</h3>
+        <p>Atención virtual para miembros de la comunidad con dificultades para acudir presencialmente. Las sesiones se realizan por plataformas seguras y certificadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ── -->
+<section id="servicios" style="padding:5rem 2rem">
+  <div class="si">
+    <div class="sec-hdr reveal">
+      <p class="sec-label">Servicios</p>
+      <h2 class="sec-title">Atención integral en salud mental</h2>
+      <p class="sec-sub">Desde terapia individual hasta atención en crisis, ofrecemos un continuo de cuidado para acompañarte en cada etapa.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card azul reveal">
+        <div class="srv-emoji">🧠</div>
+        <h3>Terapia Psicológica</h3>
+        <p>Atención individual y grupal con enfoques basados en evidencia. Abordamos ansiedad, depresión, duelo, problemas de adaptación y dificultades académicas.</p>
+        <div><span class="srv-tag">Presencial &amp; En línea</span></div>
+        <a href="#acerca" class="srv-link al">Agendar cita →</a>
+      </div>
+      <div class="srv-card azul-m reveal">
+        <div class="srv-emoji">💊</div>
+        <h3>Terapia Psiquiátrica</h3>
+        <p>Evaluación diagnóstica y manejo farmacológico por médicos psiquiatras. Trabajo interdisciplinario con el equipo de psicología para una atención integral.</p>
+        <div><span class="srv-tag">Referencia interna</span></div>
+        <a href="#acerca" class="srv-link am">Solicitar referencia →</a>
+      </div>
+      <div class="srv-card rojo reveal">
+        <div class="srv-emoji">🆘</div>
+        <h3>Urgencias Psicológicas</h3>
+        <p>Atención inmediata ante crisis emocionales, ideación suicida o situaciones de alto estrés. Sin cita previa durante el horario de servicio. Línea de crisis 24 h.</p>
+        <div><span class="srv-tag">Sin cita · Inmediato</span></div>
+        <a href="#directorio" class="srv-link rl">Ver líneas de crisis →</a>
+      </div>
+    </div>
+    <div class="urg-strip reveal">
+      <div class="us-left">
+        <div class="us-icon">📞</div>
+        <div>
+          <h3>¿Estás en crisis ahora mismo?</h3>
+          <p>Marca nuestra línea de urgencias psicológicas. Un profesional te atenderá de inmediato.</p>
+        </div>
+      </div>
+      <div class="us-phone">800 290 0024</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OFERTA ACADÉMICA ── -->
+<section class="aca" id="academica">
+  <div class="si">
+    <div class="sec-hdr reveal">
+      <p class="sec-label">Oferta Académica</p>
+      <h2 class="sec-title">Forma parte de nuestro equipo</h2>
+      <p class="sec-sub">Espacios de formación práctica para estudiantes y egresados de ciencias de la salud y áreas afines.</p>
+    </div>
+    <div class="aca-grid">
+      <div class="aca-card reveal"><div class="aca-num">01</div><div class="aca-body"><h3>Servicio Social</h3><p>Realiza tus horas de servicio apoyando en atención psicológica, talleres preventivos y actividades de difusión en salud mental. Supervisión constante por profesionales con cédula.</p><div class="aca-tags"><span class="aca-tag">Psicología</span><span class="aca-tag">Trabajo Social</span><span class="aca-tag">Medicina</span></div></div></div>
+      <div class="aca-card reveal"><div class="aca-num">02</div><div class="aca-body"><h3>Prácticas Profesionales</h3><p>Formación clínica supervisada para estudiantes de últimos semestres. Participación en valoraciones, co-terapia, grupos terapéuticos e investigación aplicada.</p><div class="aca-tags"><span class="aca-tag">Psicología Clínica</span><span class="aca-tag">Psiquiatría</span></div></div></div>
+      <div class="aca-card reveal"><div class="aca-num">03</div><div class="aca-body"><h3>Residencias y Especialidades</h3><p>La DGAS participa como sede clínica para residentes y posgrados en psicología clínica. Convenios con diversas facultades y campus de la UNAM.</p><div class="aca-tags"><span class="aca-tag">Posgrado</span><span class="aca-tag">Residencia Médica</span></div></div></div>
+      <div class="aca-card reveal"><div class="aca-num">04</div><div class="aca-body"><h3>Voluntariado en Prevención</h3><p>Programas de promotores de salud mental universitaria. Capacitación en primeros auxilios psicológicos y prevención del suicidio.</p><div class="aca-tags"><span class="aca-tag">Toda la comunidad UNAM</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INVESTIGACIÓN ── -->
+<section id="investigacion" style="padding:5rem 2rem">
+  <div class="si">
+    <div class="sec-hdr center reveal">
+      <p class="sec-label">Investigación</p>
+      <h2 class="sec-title">Producción científica del equipo</h2>
+      <p class="sec-sub">Artículos publicados por el personal de Salud Mental DGAS en revistas indexadas nacionales e internacionales.</p>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card reveal"><span class="inv-tag">Ansiedad</span><h4>Eficacia de la TCC en línea para estudiantes universitarios con ansiedad generalizada</h4><p class="inv-auth">García-López M., Hernández R., Torres A.</p><p class="inv-j">Revista Latinoamericana de Psicología</p><p class="inv-year">2024 · DOI: 10.xxxx/rlp.2024.001</p></div>
+      <div class="inv-card reveal"><span class="inv-tag">Depresión</span><h4>Prevalencia de síntomas depresivos en estudiantes de la UNAM post-pandemia</h4><p class="inv-auth">Martínez J., Sánchez P., Ávila K.</p><p class="inv-j">Salud Mental (México)</p><p class="inv-year">2024 · DOI: 10.xxxx/sm.2024.012</p></div>
+      <div class="inv-card reveal"><span class="inv-tag">Ideación Suicida</span><h4>Factores protectores ante la ideación suicida en jóvenes universitarios</h4><p class="inv-auth">Ramírez C., López B., Vega I.</p><p class="inv-j">Psicología Iberoamericana</p><p class="inv-year">2023 · DOI: 10.xxxx/pi.2023.045</p></div>
+      <div class="inv-card reveal"><span class="inv-tag">Burnout</span><h4>Síndrome de burnout académico y su relación con el rendimiento escolar</h4><p class="inv-auth">Fuentes D., Morales H.</p><p class="inv-j">Enseñanza e Investigación en Psicología</p><p class="inv-year">2023 · DOI: 10.xxxx/eip.2023.088</p></div>
+      <div class="inv-card reveal"><span class="inv-tag">Mindfulness</span><h4>Intervención basada en mindfulness para reducción del estrés en académicos</h4><p class="inv-auth">Castillo N., Rojas E., Domínguez S.</p><p class="inv-j">Universitas Psychologica</p><p class="inv-year">2023 · DOI: 10.xxxx/up.2023.031</p></div>
+      <div class="inv-card reveal"><span class="inv-tag">Género</span><h4>Perspectiva de género en la atención psicológica universitaria: desafíos</h4><p class="inv-auth">Vargas L., Peña T., Ortega M.</p><p class="inv-j">Revista de Psicología Social</p><p class="inv-year">2022 · DOI: 10.xxxx/rps.2022.009</p></div>
+    </div>
+    <div class="inv-cta reveal"><a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:13px 26px;background:transparent;color:var(--azul);border:2px solid var(--azul-suave);border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none">Ver todas las publicaciones →</a></div>
+  </div>
+</section>
+
+<!-- ── ORIENTACIÓN Y APOYO PSICOLÓGICO ── -->
+<section class="oap" id="oap">
+  <div class="si">
+    <div class="sec-hdr reveal">
+      <p class="sec-label">Orientación y Apoyo Psicológico</p>
+      <h2 class="sec-title">Material de apoyo gratuito</h2>
+      <p class="sec-sub">Descarga o consulta nuestros materiales de psicoeducación, autocuidado y prevención elaborados por el equipo de Salud Mental DGAS.</p>
+    </div>
+
+    <div class="oap-intro">
+      <div class="oap-desc reveal">
+        <p>En esta sección encontrarás recursos descargables y materiales educativos desarrollados por nuestro equipo. Están diseñados para apoyarte a ti y a quienes te rodean en el cuidado de la salud mental.</p>
+        <p>Incluye trípticos informativos, materiales de talleres, infografías visuales y recursos multimedia. Todo el contenido es gratuito y de libre acceso para la comunidad universitaria.</p>
+      </div>
+      <div class="oap-highlight reveal">
+        <h3>Destacados recientes</h3>
+        <div class="oap-items">
+          <div class="oap-item"><span class="oap-item-icon">📄</span>Tríptico: Kit para el manejo de la ansiedad</div>
+          <div class="oap-item"><span class="oap-item-icon">🎓</span>Taller de depresión — material descargable</div>
+          <div class="oap-item"><span class="oap-item-icon">🚦</span>Semáforo de atención de urgencias psicológicas</div>
+          <div class="oap-item"><span class="oap-item-icon">🖼️</span>Infografía: Señales de alerta en salud mental</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="oap-grid">
+      <div class="oap-card reveal">
+        <div class="oap-card-icon a">📄</div>
+        <h4>Trípticos Informativos</h4>
+        <p>Guías concisas sobre ansiedad, depresión, duelo, autoestima y más temas de salud mental.</p>
+        <p class="oap-count">12 trípticos disponibles</p>
+      </div>
+      <div class="oap-card reveal">
+        <div class="oap-card-icon m">🎓</div>
+        <h4>Talleres en Línea</h4>
+        <p>Grabaciones y materiales de talleres sobre manejo del estrés, habilidades socioemocionales y mindfulness.</p>
+        <p class="oap-count">8 talleres grabados</p>
+      </div>
+      <div class="oap-card reveal">
+        <div class="oap-card-icon r">🖼️</div>
+        <h4>Infografías</h4>
+        <p>Contenidos visuales sobre señales de alerta, autocuidado emocional y cómo apoyar a alguien en crisis.</p>
+        <p class="oap-count">20 infografías</p>
+      </div>
+      <div class="oap-card reveal">
+        <div class="oap-card-icon g">🎙️</div>
+        <h4>Podcasts y Videos</h4>
+        <p>Episodios y videoconferencias con temas de salud mental abordados por especialistas de la UNAM.</p>
+        <p class="oap-count">15 episodios</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIRECTORIO ── -->
+<section id="directorio" style="padding:5rem 2rem">
+  <div class="si">
+    <div class="sec-hdr reveal">
+      <p class="sec-label">Directorio</p>
+      <h2 class="sec-title">Centros y líneas de salud mental</h2>
+      <p class="sec-sub">Directorio de instituciones internas de la UNAM y líneas telefónicas externas de apoyo en salud mental.</p>
+    </div>
+
+    <div class="dir-layout">
+      <!-- Izquierda: instituciones -->
+      <div>
+        <p class="dir-main-title">Instituciones y centros de atención</p>
+        <div class="dir-list">
+          <div class="dir-card reveal">
+            <div class="dir-org">
+              <div class="dir-org-icon">🏥</div>
+              <div><h4>Departamento de Salud Mental DGAS</h4><span>Ciudad Universitaria · UNAM</span></div>
+            </div>
+            <div class="dir-lines">
+              <div class="dir-line"><strong>55 5622-0833</strong></div>
+            </div>
+            <p class="dir-desc">CMU Planta Baja, Circuito de la Investigación Científica. Lun–Vie 8:00–20:00 h.</p>
+          </div>
+          <div class="dir-card reveal">
+            <div class="dir-org">
+              <div class="dir-org-icon">🎓</div>
+              <div><h4>Centro de Servicios Psicológicos Guillermo Dávila</h4><span>Facultad de Psicología · UNAM</span></div>
+            </div>
+            <div class="dir-lines">
+              <div class="dir-line"><strong>55 5622-2312</strong></div>
+            </div>
+            <p class="dir-desc">Atención psicológica a bajo costo por estudiantes en formación bajo supervisión. Edificio D, Fac. de Psicología.</p>
+          </div>
+          <div class="dir-card reveal">
+            <div class="dir-org">
+              <div class="dir-org-icon">🌿</div>
+              <div><h4>Centro Comunitario "Dr. Julián Mac Gregor y Sánchez Navarro"</h4><span>Facultad de Psicología · UNAM</span></div>
+            </div>
+            <div class="dir-lines">
+              <div class="dir-line"><strong>55 5655-9434</strong></div>
+            </div>
+            <p class="dir-desc">Servicios psicológicos para la comunidad. Pedregal de San Ángel, Coyoacán.</p>
+          </div>
+          <div class="dir-card reveal">
+            <div class="dir-org">
+              <div class="dir-org-icon">🧩</div>
+              <div><h4>Centro de Atención Psicológica (CAP)</h4><span>FES Iztacala · UNAM</span></div>
+            </div>
+            <div class="dir-lines">
+              <div class="dir-line"><strong>55 5623-1333</strong></div>
+            </div>
+            <p class="dir-desc">Atención psicológica y orientación a estudiantes y comunidad en el campus Iztacala.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Derecha: Atención Telefónica + Recursos en Línea -->
+      <div class="dir-side">
+        <div class="dir-side-card reveal">
+          <h3>📞 Atención Telefónica</h3>
+          <div class="tel-list">
+            <div class="tel-item"><strong>800 290 0024</strong><span>Urgencias psicológicas UNAM<span class="d24">24/7</span></span></div>
+            <div class="tel-item"><strong>55 5259-8121</strong><span>SAPTEL<span class="d24">24/7</span></span></div>
+            <div class="tel-item"><strong>800 911-2000</strong><span>Línea de la Vida — SS<span class="d24">24/7</span></span></div>
+            <div class="tel-item"><strong>55 5658-1111</strong><span>LOCATEL CDMX<span class="d24">24/7</span></span></div>
+            <div class="tel-item"><strong>55 4160-0167</strong><span>INPRFM</span></div>
+            <div class="tel-item"><strong>WhatsApp: 55 8421-3990</strong><span>Crisis Text Line MX<span class="d24">24/7</span></span></div>
+          </div>
+        </div>
+        <div class="dir-side-card reveal">
+          <h3>🌐 Recursos en Línea</h3>
+          <div class="rec-en-linea">
+            <a href="https://app.ema.unam.mx/" class="rec-link" target="_blank"><span class="rec-link-icon">📋</span>EMA — Examen Médico Activo UNAM</a>
+            <a href="https://www.inprfm.gob.mx" class="rec-link" target="_blank"><span class="rec-link-icon">🏥</span>Instituto Nacional de Psiquiatría</a>
+            <a href="https://www.psicologia.unam.mx" class="rec-link" target="_blank"><span class="rec-link-icon">🎓</span>Facultad de Psicología UNAM</a>
+            <a href="https://dgas.unam.mx" class="rec-link" target="_blank"><span class="rec-link-icon">🌿</span>Sitio oficial DGAS UNAM</a>
+            <a href="#oap" class="rec-link"><span class="rec-link-icon">📄</span>Trípticos y materiales descargables</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="fi">
+    <div class="fg">
+      <div class="fb">
+        <h3>Salud Mental <span>UNAM</span></h3>
+        <p>Área de Orientación y Apoyo Psicológico · Dirección General de Atención a la Salud · Universidad Nacional Autónoma de México.</p>
+      </div>
+      <div class="fc">
+        <h4>Servicios</h4>
+        <a href="#">Terapia Psicológica</a>
+        <a href="#">Terapia Psiquiátrica</a>
+        <a href="#">Urgencias Psicológicas</a>
+        <a href="#">Atención en Línea</a>
+      </div>
+      <div class="fc">
+        <h4>Formación</h4>
+        <a href="#">Servicio Social</a>
+        <a href="#">Prácticas Profesionales</a>
+        <a href="#">Voluntariado</a>
+        <a href="#">Residencias</a>
+      </div>
+      <div class="fc">
+        <h4>Institución</h4>
+        <a href="#">Acerca de la DGAS</a>
+        <a href="#" onclick="openModal('privacidad');return false;">Aviso de Privacidad</a>
+        <a href="#" onclick="openModal('terminos');return false;">Términos y Condiciones</a>
+        <a href="#" onclick="openModal('etica');return false;">Aspectos Éticos</a>
+        <a href="#">Transparencia</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <p>© 2026 · Dirección General de Atención a la Salud · UNAM · Todos los derechos reservados.</p>
+      <div class="fsoc">
+        <a href="https://www.facebook.com/DGAS.UNAM" class="fs" target="_blank">Fb</a>
+        <a href="https://x.com/DGAS_UNAM" class="fs" target="_blank">X</a>
+        <a href="https://www.instagram.com/dgas_unam/" class="fs" target="_blank">Ig</a>
+        <a href="https://www.youtube.com/channel/UC_FMrHEoYVEHeKOiQ2D-CHA" class="fs" target="_blank">Yt</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openModal(id){
+  document.getElementById('modal-'+id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById('modal-'+id).classList.remove('open');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay=>{
+  overlay.addEventListener('click',function(e){
+    if(e.target===this){this.classList.remove('open');document.body.style.overflow='';}
+  });
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(m=>{m.classList.remove('open');document.body.style.overflow='';});
+  }
+});
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+});
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*65);obs.unobserve(e.target)}
+  });
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
