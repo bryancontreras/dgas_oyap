@@ -426,12 +426,31 @@ footer{background:var(--azul);color:white;padding:3.5rem 2rem 2rem}
 }
 @media(max-width:768px){
   .nav-links{display:none}
-  .hero-grid{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr;gap:1rem}
   .hg-inicio,.hg-quienes{grid-column:1;grid-row:auto}
   .hg-imagen,.hg-ema,.hg-mision,.hg-emergencia,.hg-mapa{grid-column:1;grid-row:auto}
   .ac-grid,.srv-grid,.inv-grid,.oap-grid{grid-template-columns:1fr}
   .fg{grid-template-columns:1fr}
   .urg-strip{flex-direction:column}
+  .hero-btns{flex-direction:column;gap:1rem}
+  .hero-btns button, .hero-btns a{width:100%}
+  section{padding:3rem 1rem}
+  .hero h1{font-size:clamp(1.5rem,5vw,2rem)}
+  .aca-grid{grid-template-columns:1fr}
+  .dir-layout{grid-template-columns:1fr;gap:1.5rem}
+  .oap-intro{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .nav-inner{padding:0 1rem}
+  .nav-logo-text{font-size:.8rem}
+  .nav-logo-sub{font-size:.6rem}
+  .hero-btns{flex-direction:column}
+  .hero-btns button, .hero-btns a{width:100%}
+  .hero h1{font-size:clamp(1.2rem,4vw,1.8rem)}
+  .sec-title{font-size:clamp(1.4rem,3vw,1.9rem)}
+  .srv-card h3{font-size:1rem}
+  .aca-grid{grid-template-columns:1fr}
+  .dir-layout{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -726,25 +745,7 @@ footer{background:var(--azul);color:white;padding:3.5rem 2rem 2rem}
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <!-- Logo Salud UNAM simplificado en SVG con colores del logo real -->
-      <svg viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Estetoscopio simplificado -->
-        <path d="M18 10 L18 28 Q18 38 28 38 Q38 38 38 28 L38 22" stroke="#1B3A6B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-        <rect x="13" y="6" width="5" height="8" rx="2" fill="#1B3A6B"/>
-        <rect x="21" y="6" width="5" height="8" rx="2" fill="#1B3A6B"/>
-        <!-- Alas izquierda -->
-        <path d="M14 20 L4 16" stroke="#9BBAE0" stroke-width="3" stroke-linecap="round"/>
-        <path d="M14 23 L2 21" stroke="#9BBAE0" stroke-width="3" stroke-linecap="round"/>
-        <!-- Figura persona + corazón -->
-        <circle cx="38" cy="26" r="4" fill="#1B3A6B"/>
-        <path d="M34 32 Q34 27 38 27 Q42 27 42 32" fill="#1B3A6B"/>
-        <path d="M43 22 Q45 19 48 22 Q51 19 53 22 Q53 28 48 32 Q43 28 43 22Z" fill="#E05470"/>
-        <circle cx="54" cy="18" r="4" fill="#9BBAE0"/>
-        <circle cx="46" cy="14" r="2.5" fill="#9BBAE0"/>
-        <!-- Texto SALUD -->
-        <text x="64" y="32" font-family="Outfit,sans-serif" font-weight="800" font-size="18" fill="#1B3A6B">SALUD</text>
-        <text x="64" y="48" font-family="Outfit,sans-serif" font-weight="800" font-size="13" fill="#E05470" letter-spacing="3">UNAM</text>
-      </svg>
+      <img src="logo.jpg" alt="DGAS UNAM Logo" style="height:40px;width:auto">
       <div>
         <div class="nav-logo-text">Salud Mental</div>
         <div class="nav-logo-sub">Orientación y Apoyo Psicológico · DGAS</div>
